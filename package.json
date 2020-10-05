@@ -1,0 +1,74 @@
+{
+  "name": "@govtechsg/oa-did-sign",
+  "version": "0.0.0-development",
+  "description": "",
+  "main": "dist/cjs/index.js",
+  "module": "dist/esm/index.js",
+  "types": "dist/types/src/index.d.ts",
+  "scripts": {
+    "build": "npm run clean && npm run build:cjs && npm run build:esm && npm run build:type",
+    "build:cjs": "tsc --module commonjs --outDir dist/cjs --project ./tsconfig.prod.json",
+    "build:esm": "tsc --module es2015 --outDir dist/esm --project ./tsconfig.prod.json",
+    "build:type": "tsc -d --emitDeclarationOnly --outDir dist/types",
+    "clean": "rm -rf dist/",
+    "commit": "git-cz",
+    "commit:retry": "npm run commit -- --retry",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "lint": "eslint . --ext .ts --max-warnings 0",
+    "lint:fix": "npm run lint -- --fix",
+    "snyk-protect": "snyk protect",
+    "prepare": "npm run snyk-protect"
+  },
+  "author": "",
+  "license": "Apache-2.0",
+  "dependencies": {
+    "@govtechsg/dnsprove": "^2.0.9",
+    "@govtechsg/open-attestation": "^4.0.0",
+    "did-resolver": "^2.1.1",
+    "ethers": "^5.0.4",
+    "ethr-did-resolver": "^3.0.0",
+    "node-cache": "^5.1.2",
+    "snyk": "^1.406.0",
+    "web-did-resolver": "^1.3.3"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^9.0.1",
+    "@commitlint/config-conventional": "^9.0.1",
+    "@commitlint/prompt": "^9.0.1",
+    "@ls-age/commitlint-circle": "1.0.0",
+    "@types/debug": "^4.1.5",
+    "@types/jest": "^26.0.3",
+    "@typescript-eslint/eslint-plugin": "^3.5.0",
+    "@typescript-eslint/parser": "^3.5.0",
+    "commitizen": "^4.2.1",
+    "eslint": "^7.4.0",
+    "eslint-config-airbnb-base": "^14.2.0",
+    "eslint-config-prettier": "^6.11.0",
+    "eslint-plugin-import": "^2.22.0",
+    "eslint-plugin-jest": "^23.18.0",
+    "eslint-plugin-prettier": "^3.1.4",
+    "git-cz": "^4.7.0",
+    "jest": "^26.1.0",
+    "prettier": "^2.0.5",
+    "semantic-release": "^17.1.1",
+    "ts-jest": "^26.1.1",
+    "typescript": "^3.9.6"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Open-Attestation/oa-verify.git"
+  },
+  "config": {
+    "commitizen": {
+      "path": "node_modules/@commitlint/prompt"
+    }
+  },
+  "prettier": {
+    "printWidth": 120
+  },
+  "snyk": true
+}
