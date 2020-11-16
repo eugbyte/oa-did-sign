@@ -1,10 +1,10 @@
-import { SigningFunction, SigningOptions } from "../types";
+import { SigningFunction, SigningOptions, SigningKey } from "../types";
 import { defaultSigners } from "./signatureSchemes";
 
 export const signerBuilder = (signers: Map<string, SigningFunction>) => (
   alg: string,
   message: string,
-  key: string,
+  key: SigningKey,
   options?: SigningOptions
 ) => {
   const signer = signers.get(alg);
