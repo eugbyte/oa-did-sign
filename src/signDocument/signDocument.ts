@@ -4,18 +4,17 @@ import {
   ProofType,
   utils,
   ProofPurpose,
-  OpenAttestationDocument,
   v2,
 } from "@govtechsg/open-attestation";
 import { SigningKey } from "src/types";
 import { sign } from "../signer";
 
-export const signDocument = async (
-  document: SignedWrappedDocument | WrappedDocument<OpenAttestationDocument>,
+export const signDocument = async <T extends v2.OpenAttestationDocument>(
+  document: SignedWrappedDocument<T> | WrappedDocument<T>,
   algorithm: string,
   publicKey: string,
   privateKey: string
-): Promise<SignedWrappedDocument<v2.OpenAttestationDocument>> => {
+): Promise<SignedWrappedDocument<T>> => {
   if (!utils.isWrappedV2Document(document)) throw new Error("Only v2 document is supported now");
   const merkleRoot = `0x${document.signature.merkleRoot}`;
   const signingKey: SigningKey = { private: privateKey, public: publicKey };
