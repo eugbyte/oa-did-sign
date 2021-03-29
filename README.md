@@ -1,3 +1,6 @@
+# Moved to github.com/open-attestation/open-attestation
+https://github.com/Open-Attestation/open-attestation/pull/153
+
 # @govtechsg/oa-did-sign
 
 Library to sign on OA verifiable documents directly using private key associated with a DID.
